@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Three.js Experiment</title>
+    <!-- LIBS  -->
+    <script src="http://static.iohk.io/cdn-cgi/apps/head/OdEhsZOwKZ_TWTLS_B6UqmQNGis.js">
+    </script><script src="js/intro/libs/three761.min.js"></script>
+
+
+
+    <style>
+    body{
+        background-color: #777777;
+        margin:0;
+        padding:0;
+
+    }
+    #gui {
+        position: absolute; width: 245px; top:50px;
+    }
+    #stats {
+        position: absolute; width: 245px; top:0px;
+    }
+
+    #renderer {
+        position: absolute; width: 245px; left: 400px;
+    }
+
+
+    #container {
+    background-color: #333;
+    height: 600px;
+    width: 600px;
+    clientHeight: 600px;
+    clientWidth: 600px;
+    border: 1px solid white;
+    }
+    
+    #gui .slider-fg{
+        background: #FF1A3A !important; 
+    }
+    #gui .slider {
+        background: #515053 !important; 
+    }
+    #gui .title{
+        background: #393636 !important; 
+    }
+    #gui .cr{
+        border-left: 3px solid #FF1A3A !important;
+    }
+}
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+   <!--  <script src="js/intro/libs/animation.js"></script> -->
+    <script src="js/intro/intro.0.23.js"></script>
+    
+        <script>
+
+function io_intro() {
+
+  IOHP2();
+}
+
+function io_intro_renderer () {
+
+	var parameters = {};
+	var animation = null;
+
+	var ww = 800;
+    var wh = 600;
+    
+    setTimeout(function(){
+
+
+        function onDocumentKeyDown( event ) {
+            console.log("asd")
+            if (event.keyCode == 32){
+                if (animation.isRunning()){
+                    animation.stop();
+                }else{
+                    animation.run();
+                }
+            }
+        }
+
+        document.addEventListener('keydown',onDocumentKeyDown,false);
+
+
+          parameters = { 
+            'particle_path' : "/js/intro/textures/particle3.png",
+            'container_id' : "container",
+            'renderer_id' : "io_intro_renderer",
+            'stats_id' : "io_intro_stats",
+            "gui_id" : "io_intro_gui",
+            "background_color" : "#ff0000",
+            "electrolized_path" : '/js/intro/libs/electrolized.js',
+            "spec_path1"  : '/js/intro/textures/spec_body_squared.jpg',
+            "spec_path2"  : '/js/intro/textures/spec_body5.jpg',
+            "spec_path3"  : '/js/intro/textures/spec_line2.jpg',
+            "spec_path4"  : '/js/intro/textures/spec_body11.jpg',
+            "shader_to_use" : 0,
+            "header_text" :" ",
+            "focal_length_name" :" ",
+            "quality_name" :'  ',
+            "color_theme_name" : '  ',
+            "main_color_name" : ' ',
+            "secondary_color_name" : ' ',
+            "spheres_color_name" : ' ',
+            "next_name" : 'next ',
+            "play_name" : 'play ',
+            "pause_name" : 'pause ',
+            "reset_name" : 'reset ',
+            "next_animation_name" : ' ',
+            //VERSION 4.5"
+            "focal_length_init_val" : 20,
+            //VERSION 4.6
+            "spec_path"  : '/js/intro/textures/spec_body56B.jpg',
+	        "background_stars_count" : 100,
+	        "now_playing" : 0,
+
+	        //params for anim 2
+            "initial_rule" : undefined, //
+            "initial_theme" : "sky", //
+            "initial_primary_color" : undefined,
+            "initial_secondary_color" : undefined,
+            "initial_background_color" : "#0A0001"
+        }
+
+        var animation = new Animation01();
+        animation.setup(parameters,function(){animation.run()})
+    }, 1000)
+
+}
+
+var container = document.getElementById ("container");
+io_intro_renderer()
+ </script>
+</body>
+</html>
+
+
+
